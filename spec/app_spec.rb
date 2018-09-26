@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] = 'test'
 
-require 'app'
+require './app/app.rb'
 require 'rspec'
 require 'rack/test'
 
@@ -19,7 +19,7 @@ describe 'The TicTacToe App' do
 
     it "says Welcome to Tic Tac Toe" do
       get '/game'
-      expect(last_response.body).to eq('Welcome to Tic Tac Toe')
+      expect(last_response.body).to include('Welcome to Tic Tac Toe')
     end
   end
 end

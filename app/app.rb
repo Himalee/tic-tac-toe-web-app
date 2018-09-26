@@ -1,5 +1,6 @@
 require 'sinatra'
+require 'erb'
 
 get '/game' do
-  "Welcome to Tic Tac Toe"
+  erb :game
 end
