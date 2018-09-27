@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] = 'test'
 
-require './app/app.rb'
+require './app.rb'
 require 'rspec'
 require 'rack/test'
 
