@@ -1,0 +1,12 @@
+#grid {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+.button {
+  background-color: #AFEEEE;
+  border: 1px solid #5F9EA0;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
