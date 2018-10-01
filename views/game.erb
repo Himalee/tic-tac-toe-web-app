@@ -1,0 +1,12 @@
+<h1>Welcome to Tic Tac Toe</h1>
+
+<div id="grid">
+  <% @grid.each_with_index do |cell, index| %>
+      <form action='/game' method='POST'>
+        <input type="hidden" name="<%= index %>" value= "<%= index %>">
+        <div class="button"><button type='submit'><%= cell %></button></div>
+      </form>
+  <% end %>
+</div>
+
+
