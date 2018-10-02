@@ -2,9 +2,8 @@
 
 <div id="grid">
   <% @grid.each_with_index do |cell, index| %>
-      <form action='/game' method='POST'>
-        <input type="hidden" name="<%= index %>" value= "<%= index %>">
-        <div class="button"><button type='submit'><%= cell %></button></div>
+      <form action='/game/play' method='POST'>
+        <div class="button"><input type="submit" name="cell" value= "<%= cell %>"></div>
       </form>
   <% end %>
 </div>
