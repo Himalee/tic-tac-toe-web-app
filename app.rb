@@ -3,7 +3,7 @@ require 'erb'
 require 'json'
 
 get '/game' do
-  @grid = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  @grid = Array.new(9, "")
   store_grid(@grid)
   erb :game, { :layout => true }
 end
