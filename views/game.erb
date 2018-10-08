@@ -3,7 +3,7 @@
 <div id="grid">
   <% @grid.each_with_index do |cell, index| %>
       <form action='/game/play' method='POST'>
-        <div class ="button"><button name="cell" type="submit" value="<%= index %>"><%= cell %></button></div>
+        <button class='cell' name="cell" type="submit" value="<%= index %>"><%= cell %></button>
       </form>
   <% end %>
 </div>
