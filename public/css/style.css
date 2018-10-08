@@ -3,10 +3,12 @@
   grid-template-columns: auto auto auto;
   padding: 10px;
 }
-.button {
+
+.cell {
   background-color: #AFEEEE;
   border: 1px solid #5F9EA0;
-  padding: 20px;
+  width: 50px;
+  height: 50px;
   font-size: 30px;
   text-align: center;
 }

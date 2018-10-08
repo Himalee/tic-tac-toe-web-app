@@ -30,7 +30,7 @@ describe 'The TicTacToe App' do
     expect(page).to have_content("Welcome")
   end
 
-  it "returns name of all initial buttons" do
+  it "returns values of all initial buttons" do
     visit "/game"
     grid = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     grid.each do |cell_name|
@@ -38,9 +38,19 @@ describe 'The TicTacToe App' do
     end
   end
 
-  it "replaces button name with mark" do
+  it "replaces button value with mark" do
     visit "/game"
     click_button "1"
     expect(page).to have_button("X")
+  end
+
+  it "switches marks when clicking buttons" do
+    visit "/game"
+    click_button "1"
+    click_button "2"
+    mark = ["X", "O"]
+    mark.each do |mark|
+      expect(page).to have_button(mark)
+    end
   end
 end
