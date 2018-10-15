@@ -1,8 +1,8 @@
 require 'sinatra'
 require 'erb'
 require 'json'
-require_relative 'lib/board.rb'
-require_relative 'lib/game.rb'
+require_relative 'models/board.rb'
+require_relative 'models/game.rb'
 
 enable :sessions
 

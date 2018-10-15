@@ -1,4 +1,4 @@
-require "board"
+require "./models/board.rb"
 
 describe Board do
   describe "#tie?()" do
