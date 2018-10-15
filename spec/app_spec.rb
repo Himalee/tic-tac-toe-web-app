@@ -53,4 +53,14 @@ describe 'The TicTacToe App' do
       expect(page).to have_button(mark)
     end
   end
+
+  it "routes to /result when first player 'X' wins" do
+    visit "/game"
+    click_button "0"
+    click_button "1"
+    click_button "3"
+    click_button "2"
+    click_button "6"
+    expect(page).to have_content("Game over")
+  end
 end

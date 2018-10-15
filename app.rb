@@ -1,39 +1,58 @@
 require 'sinatra'
 require 'erb'
 require 'json'
+require_relative 'models/board.rb'
+require_relative 'models/game.rb'
+
+enable :sessions
 
 get '/game' do
-  @grid = Array.new(9, "")
-  store_grid(@grid)
+  new_game
+  @grid = display_grid
   erb :game, { :layout => true }
 end
 
 post '/game/play' do
-  @grid = get_grid
-  move = params["cell"]
-  if @grid.count("X") == 0 && @grid.count("O") == 0
-    mark = "X"
-  elsif @grid.count("X") == @grid.count("O")
-    mark = "X"
-  else
-    mark = "O"
-  end
-  @grid[move.to_i] = mark
-  store_grid(@grid)
+  play_move
+  @grid = display_grid
+  result
   erb :game, { :layout => true }
 end
 
-def store_grid(grid)
-  hash = { "grid" => grid }
-  File.open("public/grid.json", "w") do |file|
-    file.write(hash.to_json)
+get "/result" do
+  @grid = display_grid
+  @result = display_result
+  erb :result, { :layout => true }
+end
+
+private
+
+def new_game
+  board = Board.new(Array.new(9, ""))
+  session[:game] = Game.new(board)
+end
+
+def move
+  params["cell"]
+end
+
+def play_move
+  session[:game].play_game(move.to_i)
+end
+
+def result
+  if session[:game].end_of_game?
+    redirect "/result"
   end
 end
 
-def get_grid
-  file = File.read("public/grid.json")
-  data_hash = JSON.parse(file)
-  data_hash["grid"]
+def display_result
+  session[:game].result
 end
+
+def display_grid
+  session[:game].get_grid
+end
+
 
 
