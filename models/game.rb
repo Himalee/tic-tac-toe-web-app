@@ -8,7 +8,7 @@ class Game
     @board.grid
   end
 
-  def play_game(move)
+  def play_move(move)
     @board = @board.new_board(move, get_mark)
   end
 

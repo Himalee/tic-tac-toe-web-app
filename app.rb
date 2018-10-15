@@ -6,23 +6,27 @@ require_relative 'models/game.rb'
 
 enable :sessions
 
-get '/game' do
+get '/' do
+  erb :game_mode
+end
+
+post '/game' do
   new_game
   @grid = display_grid
-  erb :game, { :layout => true }
+  erb :game
 end
 
 post '/game/play' do
   play_move
   @grid = display_grid
   result
-  erb :game, { :layout => true }
+  erb :game
 end
 
 get "/result" do
   @grid = display_grid
   @result = display_result
-  erb :result, { :layout => true }
+  erb :game
 end
 
 private
@@ -37,7 +41,7 @@ def move
 end
 
 def play_move
-  session[:game].play_game(move.to_i)
+  session[:game].play_move(move.to_i)
 end
 
 def result
