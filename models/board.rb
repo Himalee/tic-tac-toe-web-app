@@ -47,6 +47,13 @@ class Board
     @size**2
   end
 
+  def winning_mark
+    if win?
+      winning_line = all_winning_combinations.find { |line| includes_identical_elements?(line) }
+      winning_line[0]
+    end
+  end
+
   private
 
   def all_winning_combinations
@@ -73,5 +80,9 @@ class Board
       index += increase_index_by
     end
     diagonal
+  end
+
+  def includes_identical_elements?(line)
+    line.all? { |cell| cell == line[0] && cell != "" }
   end
 end

@@ -75,18 +75,18 @@ describe 'The TicTacToe App' do
       click_button "3"
       click_button "2"
       click_button "6"
-      expect(page).to have_content("Game over")
+      expect(page).to have_content("X wins")
     end
   end
 
   context "given a human vs computer game mode" do
-    it "returns 'game over'" do
+    it "returns 'player 'O' wins'" do
       visit "/"
       click_button "Human vs Computer"
       click_button "0"
       click_button "1"
       click_button "5"
-      expect(page).to have_content("Game over")
+      expect(page).to have_content("O wins")
     end
   end
 end
