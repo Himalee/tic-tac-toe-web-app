@@ -35,9 +35,9 @@ class Board
 
   def available_spaces(player_one_mark, player_two_mark)
     available_spaces = []
-    @grid.each do |cell|
+    @grid.each_with_index do |cell, index|
       if cell != player_one_mark && cell != player_two_mark
-        available_spaces << cell
+        available_spaces << index
       end
     end
     available_spaces
