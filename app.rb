@@ -17,7 +17,7 @@ post '/game' do
 end
 
 post '/game/play' do
-  play_move
+  play_turn
   @grid = display_grid
   result
   erb :game
