@@ -3,6 +3,11 @@ require 'erb'
 require 'json'
 require_relative 'models/board.rb'
 require_relative 'models/game.rb'
+require_relative 'models/player.rb'
+require_relative 'models/human_player.rb'
+require_relative 'models/computer_player.rb'
+require_relative 'models/negamax.rb'
+require_relative 'models/game_factory.rb'
 
 enable :sessions
 

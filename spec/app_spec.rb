@@ -1,6 +1,9 @@
 ENV['RACK_ENV'] = 'test'
 
 require './app.rb'
+require './models/game.rb'
+require './models/player.rb'
+require './models/human_player.rb'
 require 'rspec'
 require 'rack/test'
 require 'capybara/rspec'
