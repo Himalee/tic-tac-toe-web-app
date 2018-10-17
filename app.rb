@@ -32,16 +32,19 @@ end
 private
 
 def new_game
-  board = Board.new(Array.new(9, ""))
-  session[:game] = Game.new(board)
+  session[:game] = GameFactory.new.game(game_mode)
 end
 
 def move
   params["cell"]
 end
 
-def play_move
-  session[:game].play_move(move.to_i)
+def game_mode
+  params["game_mode"]
+end
+
+def play_turn
+  session[:game].play_turn(move.to_i)
 end
 
 def result
