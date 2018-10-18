@@ -1,5 +1,7 @@
 class Game
 
+  ComputerPlayer = "Computer Player"
+
   attr_reader :players
 
   def initialize(board, players)
@@ -13,7 +15,7 @@ class Game
 
   def play_turn(human_move)
     play_human_move(human_move)
-    if current_player.name == "Computer Player"
+    if current_player.name == ComputerPlayer
       play_computer_move
     end
   end
