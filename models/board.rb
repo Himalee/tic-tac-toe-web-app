@@ -35,9 +35,9 @@ class Board
 
   def available_spaces(player_one_mark, player_two_mark)
     available_spaces = []
-    @grid.each do |cell|
+    @grid.each_with_index do |cell, index|
       if cell != player_one_mark && cell != player_two_mark
-        available_spaces << cell
+        available_spaces << index
       end
     end
     available_spaces
@@ -45,6 +45,13 @@ class Board
 
   def max_number_of_cells
     @size**2
+  end
+
+  def winning_mark
+    if win?
+      winning_line = all_winning_combinations.find { |line| includes_identical_elements?(line) }
+      winning_line[0]
+    end
   end
 
   private
@@ -73,5 +80,9 @@ class Board
       index += increase_index_by
     end
     diagonal
+  end
+
+  def includes_identical_elements?(line)
+    line.all? { |cell| cell == line[0] && cell != "" }
   end
 end

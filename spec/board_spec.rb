@@ -54,4 +54,18 @@ describe Board do
       expect(board.end_of_game?("X", "O")).to be false
     end
   end
+
+  describe "#winning_mark()" do
+    it "returns winning mark 'X'" do
+      grid = ["X", "X", "X", "", "", "", "", "", ""]
+      board = Board.new(grid)
+      expect(board.winning_mark).to eql("X")
+    end
+
+    it "returns nil winning mark" do
+      grid = ["X", "", "", "", "", "", "", "", ""]
+      board = Board.new(grid)
+      expect(board.winning_mark).to eql(nil)
+    end
+  end
 end

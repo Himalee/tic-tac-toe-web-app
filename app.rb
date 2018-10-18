@@ -3,41 +3,53 @@ require 'erb'
 require 'json'
 require_relative 'models/board.rb'
 require_relative 'models/game.rb'
+require_relative 'models/player.rb'
+require_relative 'models/human_player.rb'
+require_relative 'models/computer_player.rb'
+require_relative 'models/negamax.rb'
+require_relative 'models/game_factory.rb'
 
 enable :sessions
 
-get '/game' do
+get '/' do
+  erb :game_mode
+end
+
+post '/game' do
   new_game
   @grid = display_grid
-  erb :game, { :layout => true }
+  erb :game
 end
 
 post '/game/play' do
-  play_move
+  play_turn
   @grid = display_grid
   result
-  erb :game, { :layout => true }
+  erb :game
 end
 
 get "/result" do
   @grid = display_grid
   @result = display_result
-  erb :result, { :layout => true }
+  erb :game
 end
 
 private
 
 def new_game
-  board = Board.new(Array.new(9, ""))
-  session[:game] = Game.new(board)
+  session[:game] = GameFactory.new.game(game_mode)
 end
 
 def move
   params["cell"]
 end
 
-def play_move
-  session[:game].play_game(move.to_i)
+def game_mode
+  params["game_mode"]
+end
+
+def play_turn
+  session[:game].play_turn(move.to_i)
 end
 
 def result
