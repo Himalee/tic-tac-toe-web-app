@@ -10,9 +10,9 @@ class Negamax
     end
     best_move = best_score.max_by { |key, value| value }[0]
     highest_minimax_score = best_score.max_by { |key, value| value }[1]
-    if depth == 0
+    if depth.zero?
       return best_move
-    elsif depth > 0
+    elsif depth.positive?
       return highest_minimax_score
     end
   end
