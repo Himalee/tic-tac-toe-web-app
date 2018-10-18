@@ -11,6 +11,9 @@ require 'capybara/rspec'
 describe 'The TicTacToe App' do
   include Rack::Test::Methods
 
+  let(:player_one_mark) { "🌝" }
+  let(:player_two_mark) { "🌚" }
+
   def app
     Sinatra::Application
   end
@@ -53,7 +56,7 @@ describe 'The TicTacToe App' do
       visit "/"
       click_button "Human vs Human"
       click_button "1"
-      expect(page).to have_button("X")
+      expect(page).to have_button(player_one_mark)
     end
 
     it "switches marks when clicking buttons" do
@@ -61,13 +64,13 @@ describe 'The TicTacToe App' do
       click_button "Human vs Human"
       click_button "1"
       click_button "2"
-      mark = ["X", "O"]
+      mark = [player_one_mark, player_two_mark]
       mark.each do |mark|
         expect(page).to have_button(mark)
       end
     end
 
-    it "routes to /result when first player 'X' wins" do
+    it "routes to /result when first player wins" do
       visit "/"
       click_button "Human vs Human"
       click_button "0"
@@ -75,18 +78,18 @@ describe 'The TicTacToe App' do
       click_button "3"
       click_button "2"
       click_button "6"
-      expect(page).to have_content("X wins")
+      expect(page).to have_content("#{player_one_mark} wins")
     end
   end
 
   context "given a human vs computer game mode" do
-    it "returns 'player 'O' wins'" do
+    it "returns computer players mark as winner'" do
       visit "/"
       click_button "Human vs Computer"
       click_button "0"
       click_button "1"
       click_button "5"
-      expect(page).to have_content("O wins")
+      expect(page).to have_content("🌚 wins")
     end
   end
 end
