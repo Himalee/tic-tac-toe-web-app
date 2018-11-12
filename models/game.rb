@@ -28,7 +28,7 @@ class Game
     if @board.tie?(current_player.mark, opponent.mark)
       "Draw"
     else
-      "Player #{@board.winning_mark} wins"
+      "Player #{@board.winning_mark} wins!"
     end
   end
 

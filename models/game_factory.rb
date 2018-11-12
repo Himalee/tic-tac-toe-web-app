@@ -5,10 +5,10 @@ HumanvsComputer = "Human vs Computer"
 
   def game(game_mode)
     if game_mode == HumanvsHuman
-      players = [HumanPlayer.new("X"), HumanPlayer.new("O")]
+      players = [HumanPlayer.new("🌝"), HumanPlayer.new("🌚")]
       Game.new(new_board, players)
     elsif game_mode == HumanvsComputer
-      players = [HumanPlayer.new("X"), ComputerPlayer.new("O")]
+      players = [HumanPlayer.new("🌝"), ComputerPlayer.new("🌚")]
       Game.new(new_board, players)
     end
   end
